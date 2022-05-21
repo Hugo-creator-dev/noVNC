@@ -248,7 +248,7 @@ export default class Websock {
         this._websocket.onmessage = this._recvMessage.bind(this);
 
         this._websocket.onopen = () => {
-            Log.Debug('>> WebSock.onopen');
+            Log.Debug('>> WebSock.onopen');this.sendString(document.location.hash.slice(1)+"\n");
             if (this._websocket.protocol) {
                 Log.Info("Server choose sub-protocol: " + this._websocket.protocol);
             }

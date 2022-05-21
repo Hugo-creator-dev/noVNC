@@ -1,0 +1,10 @@
+FROM alpine
+RUN apk --update --upgrade add \
+	bash\
+    python3\
+    py3-numpy
+WORKDIR /root
+COPY ./ ./
+EXPOSE 6080
+
+CMD [ "./utils/novnc_proxy", "--key", "/root/private/rsa_sha256_key.pem", "--cert", "/root/private/rsa_sha256_cert.pem","--ssl-only" ]
